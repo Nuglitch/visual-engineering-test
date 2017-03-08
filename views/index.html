@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf=8">
+    <title>Mobile Biometrics Front End Test</title>
+    <link href="css/base.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- content -->
+    <h1>Mobbio Test</h1>
+    
+    <!-- shopCart view -->
+    <section id="shopCart">
+      <div class="list">
+        <article class="shop-cart-item _item" data-id="15001" data-image="images/dress1.jpg" data-name="Vestido Azul" data-price="1295" data-quantity="2">
+          <span class="image">
+            <img src="images/dress1.jpg">
+          </span>
+          <span class="description">
+            <span class="name">Vestido Azul</span>
+            <span class="price">12.95 EUR</span>
+            <span class="quantity">2 Unidades</span>
+          </span>
+          <span class="delete">
+            <img src="images/delete.svg">
+          </span>
+        </article>
+
+        <article class="shop-cart-item out-of-stock _item" data-id="15002" data-image="images/dress2.jpg" data-name="Camiseta Negra" data-price="1795" data-quantity="1">
+          <span class="image">
+            <img src="images/dress2.jpg">
+          </span>
+          <span class="description">
+            <span class="name">Camiseta Negra</span>
+            <span class="price">17.95 EUR</span>
+            <span class="quantity">2 Unidades</span>
+          </span>
+          <span class="delete">
+            <img src="images/delete.svg">
+          </span>
+        </article>
+
+        <article class="shop-cart-item _item" data-id="15003" data-image="images/dress3.jpg" data-name="Pantalón Verde" data-price="3495" data-quantity="1">
+          <span class="image">
+            <img src="images/dress3.jpg">
+          </span>
+          <span class="description">
+            <span class="name">Pantalón Verde</span>
+            <span class="price">34.95 EUR</span>
+            <span class="quantity">1 Unidad</span>
+          </span>
+          <span class="delete">
+            <img src="images/delete.svg">
+          </span>
+        </article>
+      </div>
+
+      <div class="button-container">
+        <button id="buyButton">COMPRAR</button>
+      </div>
+
+    </section>
+
+    <!-- confirmation view -->
+    <section id="confirmation" style="display:none;">
+      <!-- place the html content for the confirmation here -->
+      <div class="confirmation-message">Gracias por comprar. Tu pedido se ha tramitado correctamente</div>
+      <div class="button-container">
+        <button id="resetButton">Reiniciar</button>
+      </div>
+    </section>
+  
+  </body>
+  <script src="libs/requirejs/require.js" data-main="/js/main"></script>
+</html>
