@@ -16,10 +16,10 @@ require(['modules/shop-cart', 'modules/confirmation'], function(ShopCart, Confir
   //options to pass to ShopCart and Confirmation such as class or id selectors
   //add options as needed, this are empty examples
   var shopCartOptions = {
-    urls:{
+      urls: {
         list: "/items"
       }
-  },
+    },
     confirmationOptions = {};
 
   ShopCart.init(shopCartOptions);

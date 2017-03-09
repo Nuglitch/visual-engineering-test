@@ -1,3 +1,66 @@
+$font-stack:    Helvetica, sans-serif;
+$offset-padding: 10px;
+$offset-layouts: $offset-padding + 10px;
+$offset-layouts-left: 40px + $offset-layouts;
+
+
 #example-id {
 	color: #000;
+}
+
+body {
+	font: 100% $font-stack;
+}
+
+#buyButton {
+	background-color: black;
+	border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 5px 0px;
+    margin-top: 20px;
+}
+
+.description {
+
+	.name {
+		text-transform: uppercase;
+		font-weight: bold;
+		position: absolute;
+		top: $offset-layouts;
+		left: $offset-layouts-left;
+	}
+
+	.price {
+		position: absolute;
+		bottom: $offset-layouts;
+		left: $offset-layouts-left;
+	}
+
+	.quantity {
+		position: absolute;
+		font-weight: bold;
+		bottom: $offset-layouts;
+		right: $offset-layouts;
+	}
+}
+
+.delete {
+	position: absolute;
+	top: $offset-layouts;
+	right: $offset-layouts;
+	cursor: pointer;
+}
+
+.shop-cart-item {
+	position: relative;
+	padding: $offset-padding 0px;
+	border-bottom: 1px solid #ccc;
+}
+
+.list:first-child {
+	border-top: 1px solid #ccc;
 }
