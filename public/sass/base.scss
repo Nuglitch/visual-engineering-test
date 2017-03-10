@@ -1,51 +1,42 @@
 $font-stack:    Helvetica, sans-serif;
 $offset-padding: 10px;
 $offset-layouts: $offset-padding + 10px;
-$offset-layouts-left: 40px + $offset-layouts;
-
-
-#example-id {
-	color: #000;
-}
+$offset-layouts-left: 40px + $offset-padding + $offset-layouts; //image with + shop-cart-item offset + offset we want to apply
 
 body {
 	font: 100% $font-stack;
 }
 
-#buyButton {
-	background-color: black;
-	border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    width: 100%;
-    padding: 5px 0px;
-    margin-top: 20px;
+.shop-cart-item {
+	position: relative;
+	left: 0px;
+	padding: $offset-padding;
+	border-bottom: 1px solid #ccc;
 }
 
-.description {
+.list:first-child {
+	border-top: 1px solid #ccc;
+}
 
-	.name {
-		text-transform: uppercase;
-		font-weight: bold;
-		position: absolute;
-		top: $offset-layouts;
-		left: $offset-layouts-left;
-	}
+.name {
+	text-transform: uppercase;
+	font-weight: bold;
+	position: absolute;
+	top: $offset-layouts;
+	left: $offset-layouts-left;
+}
 
-	.price {
-		position: absolute;
-		bottom: $offset-layouts;
-		left: $offset-layouts-left;
-	}
+.price {
+	position: absolute;
+	bottom: $offset-layouts;
+	left: $offset-layouts-left;
+}
 
-	.quantity {
-		position: absolute;
-		font-weight: bold;
-		bottom: $offset-layouts;
-		right: $offset-layouts;
-	}
+.quantity {
+	position: absolute;
+	font-weight: bold;
+	bottom: $offset-layouts;
+	right: $offset-layouts;
 }
 
 .delete {
@@ -55,12 +46,20 @@ body {
 	cursor: pointer;
 }
 
-.shop-cart-item {
-	position: relative;
-	padding: $offset-padding 0px;
-	border-bottom: 1px solid #ccc;
+.out-of-stock {
+	background-color: pink;
 }
 
-.list:first-child {
-	border-top: 1px solid #ccc;
+#buyButton {
+	background-color: black;
+	border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    padding: 10px 0px;
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: black;
+    cursor: pointer;
 }
