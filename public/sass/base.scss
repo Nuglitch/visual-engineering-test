@@ -71,11 +71,12 @@ body {
     font-weight: bold;
     background-color: black;
     cursor: pointer;
-}
 
-#buyButton:disabled {
-    background-color: $color-button-disabled;
-	color: $color-text-button-disabled;
+    &:disabled {
+    	background-color: $color-button-disabled;
+		color: $color-text-button-disabled;
+		cursor: default;
+	}
 }
 
 .item-animation {
