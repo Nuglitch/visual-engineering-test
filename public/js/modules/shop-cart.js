@@ -15,6 +15,7 @@ define(['jquery'], function($) {
       //check if buy button is enable
       this.handleBuyButtonEnable();
 
+      //handle delete button click event
       $('.delete').on('click', function(e) {
 
         //get the shop cart item object
@@ -38,6 +39,7 @@ define(['jquery'], function($) {
         }, time);
       });
 
+      //handle buy button click event
       $('#buyButton').on('click', function(e) {
         alert('Hola');
       });
@@ -54,8 +56,12 @@ define(['jquery'], function($) {
     },
 
     handleBuyButtonEnable: function() {
+      //are there any item out of stock?
       var outOfStock = $('.out-of-stock').size();
+
+      //are there any item in the cart list?
       var itemInCart = $('.shop-cart-item').size();
+      
       if (outOfStock === 0 && itemInCart > 0) {
         this.buttonEnabled($('#buyButton'), true);
       } else {
