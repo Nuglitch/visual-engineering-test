@@ -19,10 +19,10 @@ define(['jquery'], function($) {
     moveRight: function(elem) {
       var leftPosition = parseInt($(elem).css('left')) + 20;
       $(elem).css('left', leftPosition + 'px');
-      
+
       var animate
       if (leftPosition < window.innerWidth) {
-        animate = setTimeout(_private.moveRight.bind(null, elem), 10); // call moveRight in 20msec
+        animate = setTimeout(this.moveRight.bind(this, elem), 10); // call moveRight in 20msec
       } else {
         $(elem).remove();
         clearTimeout(animate);
