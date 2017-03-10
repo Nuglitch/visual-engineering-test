@@ -21,9 +21,10 @@ define(['jquery'], function($) {
 
         var arr = item.css('animation-duration').split(".");
 
+        //get decimal part if that exist
         var decimal = (arr[1] !== undefined)? parseInt(arr[1]) : 0;
 
-        // convert it to Integer
+        // join with decimal part
         var time = parseInt(arr[0]) * 1000 + decimal * 100;
 
         var animate = setTimeout(function() {
