@@ -21,10 +21,10 @@ define(['jquery'], function($) {
       $(elem).css('left', leftPosition + 'px');
 
       var animate
-      if (leftPosition < window.innerWidth) {
-        animate = setTimeout(this.moveRight.bind(this, elem), 10); // call moveRight in 20msec
+      if (leftPosition < window.innerWidth) { //check if the elemet is out of the windows
+        animate = setTimeout(this.moveRight.bind(this, elem), 10); // call moveRight in 10msec
       } else {
-        $(elem).remove();
+        $(elem).remove(); 
         clearTimeout(animate);
       }
     }
