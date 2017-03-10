@@ -18,25 +18,16 @@ define(['jquery'], function($) {
       //handle delete button click event
       $('.delete').on('click', function(e) {
 
-        //get the shop cart item object
-        var item = $(this).closest('.shop-cart-item');
-
         //start animation
-        item.addClass('item-animation');
-
-        // get animation duration from the CSS in milliseconds
-        var time = _private.secondsToMilliseconds(item.css('animation-duration'));
-
-        var animate = setTimeout(function() {
-
+        $(this).closest('.shop-cart-item').addClass('item-animation').on( 'webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+          
           //animation is done, we can delete the element from the DOM
-          item.remove();
-          clearTimeout(animate);
+          $( this ).remove();
 
           //check if buy button is enable
           _private.handleBuyButtonEnable(); 
+        });
 
-        }, time);
       });
 
       //handle buy button click event
@@ -45,23 +36,13 @@ define(['jquery'], function($) {
       });
     },
 
-    secondsToMilliseconds: function(seconds) {
-      var arr = seconds.split(".");
-
-      //get decimal part if that exist
-      var decimal = (arr[1] !== undefined)? parseInt(arr[1]) * 100 : 0;
-
-      //join with decimals and return the result
-      return parseInt(arr[0]) * 1000 + decimal;
-    },
-
     handleBuyButtonEnable: function() {
       //are there any item out of stock?
       var outOfStock = $('.out-of-stock').size();
 
       //are there any item in the cart list?
       var itemInCart = $('.shop-cart-item').size();
-      
+
       if (outOfStock === 0 && itemInCart > 0) {
         this.buttonEnabled($('#buyButton'), true);
       } else {
