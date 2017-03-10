@@ -12,6 +12,7 @@ define(['jquery'], function($) {
      */
     displayUI: function() {
 
+      //check if buy button is enable
       this.handleBuyButtonEnable();
 
       $('.delete').on('click', function(e) {
@@ -22,20 +23,15 @@ define(['jquery'], function($) {
         //start animation
         item.addClass('item-animation');
 
-        var arr = item.css('animation-duration').split(".");
-
-        //get decimal part if that exist
-        var decimal = (arr[1] !== undefined)? parseInt(arr[1]) : 0;
-
-        // join with decimal part
-        var time = parseInt(arr[0]) * 1000 + decimal * 100;
+        // get animation duration from the CSS in milliseconds
+        var time = _private.secondsToMilliseconds(item.css('animation-duration'));
 
         var animate = setTimeout(function() {
 
           //animation is done, we can delete the element from the DOM
           item.remove();
           clearTimeout(animate);
-          
+
           //check if buy button is enable
           _private.handleBuyButtonEnable(); 
 
@@ -45,6 +41,16 @@ define(['jquery'], function($) {
       $('#buyButton').on('click', function(e) {
         alert('Hola');
       });
+    },
+
+    secondsToMilliseconds: function(seconds) {
+      var arr = seconds.split(".");
+
+      //get decimal part if that exist
+      var decimal = (arr[1] !== undefined)? parseInt(arr[1]) * 100 : 0;
+
+      //join with decimals and return the result
+      return parseInt(arr[0]) * 1000 + decimal;
     },
 
     handleBuyButtonEnable: function() {
