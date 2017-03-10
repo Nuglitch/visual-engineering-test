@@ -11,6 +11,9 @@ define(['jquery'], function($) {
      * private method to displau UI and bind user action events
      */
     displayUI: function() {
+
+      this.handleBuyButtonEnable();
+
       $('.delete').on('click', function(e) {
 
         //get the shop cart item object
@@ -32,13 +35,34 @@ define(['jquery'], function($) {
           //animation is done, we can delete the element from the DOM
           item.remove();
           clearTimeout(animate);
+          
+          //check if buy button is enable
+          _private.handleBuyButtonEnable(); 
 
-        }, time); 
+        }, time);
+      });
+
+      $('#buyButton').on('click', function(e) {
+        alert('Hola');
       });
     },
 
     handleBuyButtonEnable: function() {
+      var outOfStock = $('.out-of-stock').size();
+      var itemInCart = $('.shop-cart-item').size();
+      if (outOfStock === 0 && itemInCart > 0) {
+        this.buttonEnabled($('#buyButton'), true);
+      } else {
+        this.buttonEnabled($('#buyButton'), false);
+      }
+    },
 
+    buttonEnabled: function(button, enable) {
+      if (enable) {
+        button.removeAttr('disabled');
+      } else {
+        button.attr('disabled', 'disabled');
+      }
     }
   };
 
