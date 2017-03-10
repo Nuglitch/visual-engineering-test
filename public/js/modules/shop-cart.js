@@ -12,21 +12,32 @@ define(['jquery'], function($) {
      */
     displayUI: function() {
       $('.delete').on('click', function(e) {
-        _private.moveRight(this.closest('.shop-cart-item'));
+
+        //get the shop cart item object
+        var item = $(this).closest('.shop-cart-item');
+
+        //start animation
+        item.addClass('item-animation');
+
+        var arr = item.css('animation-duration').split(".");
+
+        var decimal = (arr[1] !== undefined)? parseInt(arr[1]) : 0;
+
+        // convert it to Integer
+        var time = parseInt(arr[0]) * 1000 + decimal * 100;
+
+        var animate = setTimeout(function() {
+
+          //animation is done, we can delete the element from the DOM
+          item.remove();
+          clearTimeout(animate);
+
+        }, time); 
       });
     },
 
-    moveRight: function(elem) {
-      var leftPosition = parseInt($(elem).css('left')) + 20;
-      $(elem).css('left', leftPosition + 'px');
+    handleBuyButtonEnable: function() {
 
-      var animate
-      if (leftPosition < window.innerWidth) { //check if the elemet is out of the windows
-        animate = setTimeout(this.moveRight.bind(this, elem), 10); // call moveRight in 10msec
-      } else {
-        $(elem).remove(); 
-        clearTimeout(animate);
-      }
     }
   };
 

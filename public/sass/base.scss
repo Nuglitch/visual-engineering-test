@@ -1,4 +1,13 @@
+/* font configuration */
 $font-stack:    Helvetica, sans-serif;
+
+/* buttons colors configuration */
+$color-button: black;
+$color-text-button: white;
+$color-button-disabled: gray;
+$color-text-button-disabled: white;
+
+/* offsets configuration */
 $offset-padding: 10px;
 $offset-layouts: $offset-padding + 10px;
 $offset-layouts-left: 40px + $offset-padding + $offset-layouts; //image with + shop-cart-item offset + offset we want to apply
@@ -51,9 +60,9 @@ body {
 }
 
 #buyButton {
-	background-color: black;
-	border: none;
-    color: white;
+	background-color: $color-button;
+	color: $color-text-button;
+	border: none;    
     text-align: center;
     text-decoration: none;
     width: 100%;
@@ -62,4 +71,37 @@ body {
     font-weight: bold;
     background-color: black;
     cursor: pointer;
+}
+
+#buyButton.disabled {
+    background-color: $color-button-disabled;
+	color: $color-text-button-disabled;
+}
+
+.item-animation {
+    -webkit-animation-name: delete-animation; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 300ms; /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-name: delete-animation;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+}
+
+@mixin animation-content {
+	from {
+    	left: 0px;
+    }
+    to {
+    	left: 100%;
+    }
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes delete-animation {
+    @include animation-content;
+}
+
+/* Standard syntax */
+@keyframes delete-animation {
+    @include animation-content;
 }
