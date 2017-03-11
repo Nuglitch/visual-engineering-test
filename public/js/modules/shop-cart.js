@@ -1,7 +1,7 @@
 /**
  * This modules manages the logic for the shopping cart
  */
-define(['jquery'], function($) {
+define(['jquery'], function ($) {
   'use strict';
 
   var _private = {
@@ -10,33 +10,34 @@ define(['jquery'], function($) {
     /**
      * private method to displau UI and bind user action events
      */
-    displayUI: function() {
+    displayUI: function () {
 
       //check if buy button is enable
       this.handleBuyButtonEnable();
 
       //handle delete button click event
-      $('.delete').on('click', function(e) {
+      $('.delete').on('click', function (e) {
 
         //start animation
-        $(this).closest('.shop-cart-item').addClass('item-animation').on( 'webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
-          
+        $(this).closest('.shop-cart-item').addClass('item-animation').on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function () {
+
           //animation is done, we can delete the element from the DOM
-          $( this ).remove();
+          $(this).remove();
 
           //check if buy button is enable
-          _private.handleBuyButtonEnable(); 
+          _private.handleBuyButtonEnable();
         });
 
       });
 
       //handle buy button click event
-      $('#buyButton').on('click', function(e) {
-        alert('Hola');
+      $('#buyButton').on('click', function (e) {
+        $('#shopCart').hide();
+        $('#confirmation').show();
       });
     },
 
-    handleBuyButtonEnable: function() {
+    handleBuyButtonEnable: function () {
       //are there any item out of stock?
       var outOfStock = $('.out-of-stock').size();
 
@@ -50,7 +51,7 @@ define(['jquery'], function($) {
       }
     },
 
-    buttonEnabled: function(button, enable) {
+    buttonEnabled: function (button, enable) {
       if (enable) {
         button.removeAttr('disabled');
       } else {
@@ -65,7 +66,7 @@ define(['jquery'], function($) {
      * Initialization method for this module
      * @param options
      */
-    init: function(options) {
+    init: function (options) {
       _private.options = options;
 
       _private.displayUI();

@@ -59,18 +59,17 @@ body {
 	background-color: pink;
 }
 
-#buyButton {
+button {
 	background-color: $color-button;
 	color: $color-text-button;
 	border: none;    
     text-align: center;
     text-decoration: none;
-    width: 100%;
+	width: 100%;
     padding: 10px 0px;
-    margin-top: 20px;
-    font-weight: bold;
-    background-color: black;
-    cursor: pointer;
+	font-weight: bold;
+	cursor: pointer;
+	margin-top: 20px;
 
     &:disabled {
     	background-color: $color-button-disabled;
