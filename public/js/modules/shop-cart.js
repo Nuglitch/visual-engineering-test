@@ -32,7 +32,7 @@ define(['jquery'], function ($) {
 
       //handle buy button click event
       $('#buyButton').on('click', function (e) {
-        $('#shopCart').remove();
+        $('#shopCart').hide();
         $('#confirmation').show();
       });
     },
