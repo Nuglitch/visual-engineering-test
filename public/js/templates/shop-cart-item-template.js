@@ -32,7 +32,7 @@ define(['jquery', 'handlebars'], function ($, Handlebars) {
             var doTemplate = Handlebars.compile(this.htmlTemplate);
 
             Handlebars.registerHelper('priceEur', function (price) {
-                return price + " EUR";
+                return _private.numberToEurFormat(price) + " EUR";
             });
 
             Handlebars.registerHelper('addClassOutOfStock', function (outStock) {
@@ -45,7 +45,16 @@ define(['jquery', 'handlebars'], function ($, Handlebars) {
         },
 
         numberToEurFormat: function (num) {
-
+            if (num.length > 2) {
+                var splitIndex = num.length - 2;
+                return num.substring(0, splitIndex) + "." + num.substring(splitIndex);
+            } else if (num.length === 2) {
+                return "0." + num;
+            } else if (num.length === 1) {
+                return "0.0" + num;
+            } else {
+                return "Undefined";
+            }
         }
     };
 
