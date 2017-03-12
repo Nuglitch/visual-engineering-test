@@ -22,7 +22,9 @@ require(['modules/shop-cart', 'modules/confirmation'], function(ShopCart, Confir
       },
       showConfirmation: Confirmation.show
     },
-    confirmationOptions = {};
+    confirmationOptions = {
+      resetShopCart: ShopCart.reset
+    };
 
   ShopCart.init(shopCartOptions);
   Confirmation.init(confirmationOptions);

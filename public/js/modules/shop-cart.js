@@ -1,7 +1,7 @@
 /**
  * This modules manages the logic for the shopping cart
  */
-define(['jquery'], function ($) {
+define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartItemTemplate) {
   'use strict';
 
   var _private = {
@@ -24,18 +24,19 @@ define(['jquery'], function ($) {
       //handle buy button click event
       $('#buyButton').on('click', function (e) {
         $('#shopCart').hide();
+        $('#shopCart .list').remove();
         _private.options.showConfirmation();
       });
     },
 
-    deleteElementWithAnimationSlideRight: function(element) {
+    deleteElementWithAnimationSlideRight: function (element) {
       $(element).addClass('item-animation').on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function () {
 
-          //animation is done, we can delete the element from the DOM
-          $(this).remove();
+        //animation is done, we can delete the element from the DOM
+        $(this).remove();
 
-          _private.checkIfBuyButtonIsEnable($('#shopCart .list'), $('#buyButton'));
-        });
+        _private.checkIfBuyButtonIsEnable($('#shopCart .list'), $('#buyButton'));
+      });
     },
 
     checkIfBuyButtonIsEnable: function (shopList, button) {
@@ -58,6 +59,26 @@ define(['jquery'], function ($) {
       } else {
         $(button).attr('disabled', 'disabled');
       }
+    },
+
+    addItemsFromServer: function (container) {
+      $.ajax({
+        url: this.options.list,
+        type: 'GET',
+        success: function (data) {
+
+          var templateOptions = {
+            data: data,
+            container: container
+          };
+
+          ShopCartItemTemplate.init(templateOptions);
+          _private.displayUI();
+        },
+        error: function (data) {
+          console.log('Error getting items');
+        }
+      });
     }
   };
 
@@ -71,6 +92,10 @@ define(['jquery'], function ($) {
       _private.options = options;
 
       _private.displayUI();
+    },
+
+    reset: function () {
+      _private.addItemsFromServer($("#shopCart"));
     },
 
     /**

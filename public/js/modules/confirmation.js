@@ -11,7 +11,14 @@ define(['jquery'], function($) {
      * private method to displau UI and bind user action events
      */
     displayUI: function() {
+      $('#resetButton').on('click', function (e) {
+        _private.hide();
+        _private.options.resetShopCart();
+      });
+    },
 
+    hide: function() {
+      $('#confirmation').hide();
     }
   };
 
