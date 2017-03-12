@@ -12,21 +12,12 @@ define(['jquery'], function ($) {
      */
     displayUI: function () {
 
-      //check if buy button is enable
-      this.handleBuyButtonEnable();
+      this.checkIfBuyButtonIsEnable($('#shopCart .list'), $('#buyButton'));
 
       //handle delete button click event
       $('.delete').on('click', function (e) {
 
-        //start animation
-        $(this).closest('.shop-cart-item').addClass('item-animation').on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function () {
-
-          //animation is done, we can delete the element from the DOM
-          $(this).remove();
-
-          //check if buy button is enable
-          _private.handleBuyButtonEnable();
-        });
+        _private.deleteElementWithAnimationSlideRight($(this).closest('.shop-cart-item'));
 
       });
 
@@ -37,25 +28,35 @@ define(['jquery'], function ($) {
       });
     },
 
-    handleBuyButtonEnable: function () {
-      //are there any item out of stock?
-      var outOfStock = $('.out-of-stock').size();
+    deleteElementWithAnimationSlideRight: function(element) {
+      $(element).addClass('item-animation').on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function () {
 
-      //are there any item in the cart list?
-      var itemInCart = $('.shop-cart-item').size();
+          //animation is done, we can delete the element from the DOM
+          $(this).remove();
+
+          _private.checkIfBuyButtonIsEnable($('#shopCart .list'), $('#buyButton'));
+        });
+    },
+
+    checkIfBuyButtonIsEnable: function (shopList, button) {
+      //are there any item out of stock?
+      var outOfStock = $(shopList).find('.out-of-stock').size();
+
+      //are there any item in the shop list?
+      var itemInCart = $(shopList).find('.shop-cart-item').size();
 
       if (outOfStock === 0 && itemInCart > 0) {
-        this.buttonEnabled($('#buyButton'), true);
+        this.addButtonEnabledProperty(button, true);
       } else {
-        this.buttonEnabled($('#buyButton'), false);
+        this.addButtonEnabledProperty(button, false);
       }
     },
 
-    buttonEnabled: function (button, enable) {
+    addButtonEnabledProperty: function (button, enable) {
       if (enable) {
-        button.removeAttr('disabled');
+        $(button).removeAttr('disabled');
       } else {
-        button.attr('disabled', 'disabled');
+        $(button).attr('disabled', 'disabled');
       }
     }
   };
@@ -70,7 +71,12 @@ define(['jquery'], function ($) {
       _private.options = options;
 
       _private.displayUI();
-    }
+    },
+
+    /**
+     * Access to private methods for testing
+     */
+    apiTest: _private
   };
 
   return _public;
