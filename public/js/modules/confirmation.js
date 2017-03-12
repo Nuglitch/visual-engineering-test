@@ -25,6 +25,10 @@ define(['jquery'], function($) {
       _private.options = options;
 
       _private.displayUI();
+    },
+
+    show: function() {
+      $('#confirmation').show();
     }
   };
 

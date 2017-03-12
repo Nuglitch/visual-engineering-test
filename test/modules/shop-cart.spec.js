@@ -1,73 +1,73 @@
-define(['modules/shop-cart'], function(ShopCart) {
+define(['modules/shop-cart'], function (ShopCart) {
   'use strict';
 
-  describe('ShopCart module Test', function() {
+  describe('ShopCart module Test', function () {
 
     var options = {};
-    it('should have init method', function() {
+    it('should have init method', function () {
 
       expect(ShopCart.init).toBeDefined();
     });
+  });
 
-    describe('buy button should be disabled if there are no items in the cart', function() {
-      var list = document.createElement("div");
+  describe('buy button should be disabled if there are no items in the cart', function () {
+    var list = document.createElement("div");
 
-      var button = document.createElement("button");
+    var button = document.createElement("button");
 
-      it('check empty list', function() {
-        ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
-        expect(button.getAttribute("disabled")).toBeDefined();
-        expect(button.getAttribute("disabled")).toMatch("disabled");
-      });
-      
-      it('check list with one item', function() {
-        var item = document.createElement("article");
-        item.classList.add("shop-cart-item");
-        list.appendChild(item);
-
-        ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
-        expect(button.getAttribute("disabled")).toBe(null);
-      });
+    it('check empty list', function () {
+      ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
+      expect(button.getAttribute("disabled")).toBeDefined();
+      expect(button.getAttribute("disabled")).toMatch("disabled");
     });
 
-    describe('buy button should be disabled if there is one or more items out of stock', function() {
-      var list = document.createElement("div");
-
+    it('check list with one item', function () {
       var item = document.createElement("article");
       item.classList.add("shop-cart-item");
       list.appendChild(item);
 
-      item = document.createElement("article");
-      item.classList.add("shop-cart-item");
-      list.appendChild(item);
+      ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
+      expect(button.getAttribute("disabled")).toBe(null);
+    });
+  });
 
-      var button = document.createElement("button");
+  describe('buy button should be disabled if there is one or more items out of stock', function () {
+    var list = document.createElement("div");
 
-      it('check list without elemts out of stock', function() {
-        ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
-        expect(button.getAttribute("disabled")).toBe(null);
-      });
+    var item = document.createElement("article");
+    item.classList.add("shop-cart-item");
+    list.appendChild(item);
 
-      it('check list with one element out of stock', function() {
-        var itemOutStockA = document.createElement("article");
-        itemOutStockA.classList.add("out-of-stock"); 
-        list.appendChild(itemOutStockA); 
+    item = document.createElement("article");
+    item.classList.add("shop-cart-item");
+    list.appendChild(item);
 
-        ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
-        expect(button.getAttribute("disabled")).toBeDefined();
-        expect(button.getAttribute("disabled")).toMatch("disabled");
-      });
+    var button = document.createElement("button");
 
-      it('check list with two elements out of stock', function() {
-        var itemOutStockB = document.createElement("article");
-        itemOutStockB.classList.add("out-of-stock"); 
-        list.appendChild(itemOutStockB);
-        button = document.createElement("button");
+    it('check list without elemts out of stock', function () {
+      ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
+      expect(button.getAttribute("disabled")).toBe(null);
+    });
 
-        ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
-        expect(button.getAttribute("disabled")).toBeDefined();
-        expect(button.getAttribute("disabled")).toMatch("disabled");
-      });
+    it('check list with one element out of stock', function () {
+      var itemOutStockA = document.createElement("article");
+      itemOutStockA.classList.add("out-of-stock");
+      list.appendChild(itemOutStockA);
+
+      ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
+      expect(button.getAttribute("disabled")).toBeDefined();
+      expect(button.getAttribute("disabled")).toMatch("disabled");
+    });
+
+    it('check list with two elements out of stock', function () {
+      var itemOutStockB = document.createElement("article");
+      itemOutStockB.classList.add("out-of-stock");
+      list.appendChild(itemOutStockB);
+      button = document.createElement("button");
+
+      ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
+      expect(button.getAttribute("disabled")).toBeDefined();
+      expect(button.getAttribute("disabled")).toMatch("disabled");
     });
   });
 });

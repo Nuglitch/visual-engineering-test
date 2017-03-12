@@ -19,7 +19,8 @@ require(['modules/shop-cart', 'modules/confirmation'], function(ShopCart, Confir
   var shopCartOptions = {
       urls: {
         list: "/items"
-      }
+      },
+      showConfirmation: Confirmation.show
     },
     confirmationOptions = {};
 

@@ -24,7 +24,7 @@ define(['jquery'], function ($) {
       //handle buy button click event
       $('#buyButton').on('click', function (e) {
         $('#shopCart').hide();
-        $('#confirmation').show();
+        _private.options.showConfirmation();
       });
     },
 
