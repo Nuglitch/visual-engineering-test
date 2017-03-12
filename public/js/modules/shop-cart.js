@@ -63,7 +63,7 @@ define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartIte
 
     addItemsFromServer: function (container) {
       $.ajax({
-        url: this.options.list,
+        url: _private.options.urls.list,
         type: 'GET',
         success: function (data) {
 

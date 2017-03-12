@@ -1,7 +1,7 @@
 /**
  * This modules manages the logic for the shopping cart
  */
-define(['jquery'], function($) {
+define(['jquery'], function ($) {
   'use strict';
 
   var _private = {
@@ -10,14 +10,14 @@ define(['jquery'], function($) {
     /**
      * private method to displau UI and bind user action events
      */
-    displayUI: function() {
+    displayUI: function () {
       $('#resetButton').on('click', function (e) {
         _private.hide();
         _private.options.resetShopCart();
       });
     },
 
-    hide: function() {
+    hide: function () {
       $('#confirmation').hide();
     }
   };
@@ -28,13 +28,13 @@ define(['jquery'], function($) {
      * Initialization method for this module
      * @param options
      */
-    init: function(options) {
+    init: function (options) {
       _private.options = options;
 
       _private.displayUI();
     },
 
-    show: function() {
+    show: function () {
       $('#confirmation').show();
     }
   };

@@ -36,12 +36,16 @@ define(['jquery', 'handlebars'], function ($, Handlebars) {
             });
 
             Handlebars.registerHelper('addClassOutOfStock', function (outStock) {
-                return (outStock)? "out-of-stock" : "";
+                return (outStock) ? "out-of-stock" : "";
             });
 
             var htmlData = doTemplate(this.options.data);
             this.options.container.prepend(htmlData);
             this.options.container.show();
+        },
+
+        numberToEurFormat: function (num) {
+
         }
     };
 
