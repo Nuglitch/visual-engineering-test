@@ -17,7 +17,8 @@ require.config({
   baseUrl: '/base/public/js',
 
   paths: {
-    "jquery" : "../libs/zepto/zepto.min"
+    "jquery" : "../libs/zepto/zepto.min",
+    "handlebars": "../libs/handlebars/handlebars.min"
   },
   shim: {
     "jquery":{

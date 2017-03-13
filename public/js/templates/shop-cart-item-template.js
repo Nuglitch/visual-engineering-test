@@ -45,13 +45,19 @@ define(['jquery', 'handlebars'], function ($, Handlebars) {
         },
 
         numberToEurFormat: function (num) {
-            if (num.length > 2) {
-                var splitIndex = num.length - 2;
-                return num.substring(0, splitIndex) + "." + num.substring(splitIndex);
-            } else if (num.length === 2) {
-                return "0." + num;
-            } else if (num.length === 1) {
-                return "0.0" + num;
+            var isnum = /^\d+$/.test(num);
+            if (!isnum) return "Undefined";
+
+            //convert to string if num is not
+            var numString = num + "";
+
+            if (numString.length > 2) {
+                var splitIndex = numString.length - 2;
+                return numString.substring(0, splitIndex) + "." + numString.substring(splitIndex);
+            } else if (numString.length === 2) {
+                return "0." + numString;
+            } else if (numString.length === 1) {
+                return "0.0" + numString;
             } else {
                 return "Undefined";
             }
@@ -68,7 +74,12 @@ define(['jquery', 'handlebars'], function ($, Handlebars) {
             _private.options = options;
 
             _private.displayUI();
-        }
+        },
+
+        /**
+         * Access to private methods for testing
+         */
+        apiTest: _private
     };
 
     return _public;
