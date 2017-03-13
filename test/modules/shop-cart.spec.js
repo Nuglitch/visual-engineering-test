@@ -20,7 +20,7 @@ define(['modules/shop-cart'], function (ShopCart) {
       it('check empty list', function () {
         ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
         expect(button.getAttribute("disabled")).toBeDefined();
-        expect(button.getAttribute("disabled")).toMatch("disabled");
+        expect(button.getAttribute("disabled")).toBe("disabled");
       });
 
       it('check list with one item', function () {
@@ -58,7 +58,7 @@ define(['modules/shop-cart'], function (ShopCart) {
 
         ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
         expect(button.getAttribute("disabled")).toBeDefined();
-        expect(button.getAttribute("disabled")).toMatch("disabled");
+        expect(button.getAttribute("disabled")).toBe("disabled");
       });
 
       it('check list with two elements out of stock', function () {
@@ -69,7 +69,7 @@ define(['modules/shop-cart'], function (ShopCart) {
 
         ShopCart.apiTest.checkIfBuyButtonIsEnable(list, button);
         expect(button.getAttribute("disabled")).toBeDefined();
-        expect(button.getAttribute("disabled")).toMatch("disabled");
+        expect(button.getAttribute("disabled")).toBe("disabled");
       });
     });
 
