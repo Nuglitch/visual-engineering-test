@@ -20,10 +20,12 @@ require(['modules/shop-cart', 'modules/confirmation'], function(ShopCart, Confir
       urls: {
         list: "/items"
       },
-      showConfirmation: Confirmation.show
+      showConfirmation: Confirmation.show,
+      containerId: 'shopCart'
     },
     confirmationOptions = {
-      resetShopCart: ShopCart.reset
+      resetShopCart: ShopCart.reset,
+      containerId: 'confirmation'
     };
 
   ShopCart.init(shopCartOptions);

@@ -11,14 +11,12 @@ define(['jquery'], function($) {
      * private method to displau UI and bind user action events
      */
     displayUI: function() {
-      $('#resetButton').on('click', function(e) {
-        _private.hide();
+
+      //handle reset button click event
+      _private.container.find('#resetButton').on('click', function(e) {
+        _public.hide();
         _private.options.resetShopCart();
       });
-    },
-
-    hide: function() {
-      $('#confirmation').hide();
     }
   };
 
@@ -31,11 +29,23 @@ define(['jquery'], function($) {
     init: function(options) {
       _private.options = options;
 
+      _private.container = $('#' + options.containerId);
+
       _private.displayUI();
     },
 
+    /**
+     * Show the container
+     */
     show: function() {
-      $('#confirmation').show();
+      _private.container.show();
+    },
+
+    /**
+     * Hide the container
+     */
+    hide: function() {
+      _private.container.hide();
     }
   };
 

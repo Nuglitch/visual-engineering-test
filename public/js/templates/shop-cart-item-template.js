@@ -40,10 +40,14 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
       });
 
       var htmlData = doTemplate(this.options.data);
-      this.options.container.prepend(htmlData);
-      this.options.container.show();
+      this.container.prepend(htmlData);
+      this.container.show();
     },
 
+    /**
+     * Convert a number to a EUR coin standard nomenclature. Ex: 4321 -> 43.21
+     * @param num - Number to convert
+     */
     numberToEurFormat: function(num) {
       var isnum = /^\d+$/.test(num);
       if (!isnum) {
@@ -74,6 +78,8 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
      */
     init: function(options) {
       _private.options = options;
+
+      _private.container = $('#' + options.containerId);
 
       _private.displayUI();
     },
