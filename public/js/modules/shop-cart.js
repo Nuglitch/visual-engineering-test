@@ -1,7 +1,7 @@
 /**
  * This modules manages the logic for the shopping cart
  */
-define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartItemTemplate) {
+define(['jquery', 'templates/shop-cart-item-template'], function($, ShopCartItemTemplate) {
   'use strict';
 
   var _private = {
@@ -10,27 +10,27 @@ define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartIte
     /**
      * private method to displau UI and bind user action events
      */
-    displayUI: function () {
+    displayUI: function() {
 
       this.checkIfBuyButtonIsEnable($('#shopCart .list'), $('#buyButton'));
 
       //handle delete button click event
-      $('.delete').on('click', function (e) {
+      $('.delete').on('click', function(e) {
 
         _private.deleteElementWithAnimationSlideRight($(this).closest('.shop-cart-item'));
 
       });
 
       //handle buy button click event
-      $('#buyButton').on('click', function (e) {
+      $('#buyButton').on('click', function(e) {
         $('#shopCart').hide();
         $('#shopCart .list').remove();
         _private.options.showConfirmation();
       });
     },
 
-    deleteElementWithAnimationSlideRight: function (element) {
-      $(element).addClass('item-animation').on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function () {
+    deleteElementWithAnimationSlideRight: function(element) {
+      $(element).addClass('item-animation').on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
 
         //animation is done, we can delete the element from the DOM
         $(this).remove();
@@ -39,7 +39,7 @@ define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartIte
       });
     },
 
-    checkIfBuyButtonIsEnable: function (shopList, button) {
+    checkIfBuyButtonIsEnable: function(shopList, button) {
       //are there any item out of stock?
       var outOfStock = $(shopList).find('.out-of-stock').size();
 
@@ -53,7 +53,7 @@ define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartIte
       }
     },
 
-    addButtonEnabledProperty: function (button, enable) {
+    addButtonEnabledProperty: function(button, enable) {
       if (enable) {
         $(button).removeAttr('disabled');
       } else {
@@ -61,11 +61,11 @@ define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartIte
       }
     },
 
-    addItemsFromServer: function (container) {
+    addItemsFromServer: function(container) {
       $.ajax({
         url: _private.options.urls.list,
         type: 'GET',
-        success: function (data) {
+        success: function(data) {
 
           var templateOptions = {
             data: data,
@@ -75,8 +75,8 @@ define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartIte
           ShopCartItemTemplate.init(templateOptions);
           _private.displayUI();
         },
-        error: function (data) {
-          console.log('Error getting items');
+        error: function(data) {
+          alert('Error getting items');
         }
       });
     }
@@ -88,13 +88,13 @@ define(['jquery', 'templates/shop-cart-item-template'], function ($, ShopCartIte
      * Initialization method for this module
      * @param options
      */
-    init: function (options) {
+    init: function(options) {
       _private.options = options;
 
       _private.displayUI();
     },
 
-    reset: function () {
+    reset: function() {
       _private.addItemsFromServer($("#shopCart"));
     },
 
