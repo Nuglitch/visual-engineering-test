@@ -56,6 +56,8 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
      * @param num - Number to convert
      */
     numberToEurFormat: function(num) {
+
+      //check if num contains only digits without other simbols
       var isnum = /^\d+$/.test(num);
       if (!isnum) {
         return "Undefined";
