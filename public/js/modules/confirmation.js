@@ -1,7 +1,7 @@
 /**
  * This modules manages the logic for the shopping cart
  */
-define(['jquery'], function($) {
+define(['jquery'], function ($) {
   'use strict';
 
   var _private = {
@@ -10,10 +10,10 @@ define(['jquery'], function($) {
     /**
      * private method to displau UI and bind user action events
      */
-    displayUI: function() {
+    displayUI: function () {
 
       //handle reset button click event
-      _private.container.find('#resetButton').on('click', function(e) {
+      _private.container.find('#resetButton').on('click', function (e) {
         _public.hide();
         _private.options.resetShopCart();
       });
@@ -26,7 +26,7 @@ define(['jquery'], function($) {
      * Initialization method for this module
      * @param options
      */
-    init: function(options) {
+    init: function (options) {
       _private.options = options;
 
       _private.container = $('#' + options.containerId);
@@ -37,14 +37,14 @@ define(['jquery'], function($) {
     /**
      * Show the container
      */
-    show: function() {
+    show: function () {
       _private.container.show();
     },
 
     /**
      * Hide the container
      */
-    hide: function() {
+    hide: function () {
       _private.container.hide();
     }
   };

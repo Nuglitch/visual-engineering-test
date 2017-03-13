@@ -16,7 +16,7 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
       "<span class='description'>" +
       "<span class='name'>{{name}}</span>" +
       "<span class='price'>{{priceEur price}}</span>" +
-      "<span class='quantity'>{{quantity}} Unidades</span>" +
+      "<span class='quantity'>{{addQuantityWithCorrectIndicator quantity}}</span>" +
       "</span>" +
       "<span class='delete'>" +
       "<img src='images/delete.svg'>" +
@@ -37,6 +37,13 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
 
       Handlebars.registerHelper('addClassOutOfStock', function(outStock) {
         return (outStock) ? "out-of-stock" : "";
+      });
+
+      Handlebars.registerHelper('addQuantityWithCorrectIndicator', function(quantity) {
+        if (quantity == "1") {
+          return quantity + " Unidad";
+        }
+        return quantity + " Unidades";
       });
 
       var htmlData = doTemplate(this.options.data);
