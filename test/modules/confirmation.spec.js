@@ -8,6 +8,12 @@ define(['modules/confirmation'], function(Confirmation) {
       expect(Confirmation.init).toBeDefined();
     });
 
+    it('init method should call displayUI method', function () {
+      spyOn(Confirmation.apiTest, 'displayUI');
+      Confirmation.init(options);
+       expect(Confirmation.apiTest.displayUI).toHaveBeenCalled();
+    });
+
     it('should have show method', function() {
       expect(Confirmation.show).toBeDefined();
     });

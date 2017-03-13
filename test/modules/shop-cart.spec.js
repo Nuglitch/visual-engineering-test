@@ -8,6 +8,12 @@ define(['modules/shop-cart'], function (ShopCart) {
       expect(ShopCart.init).toBeDefined();
     });
 
+    it('init method should call displayUI method', function () {
+      spyOn(ShopCart.apiTest, 'displayUI');
+      ShopCart.init(options);
+       expect(ShopCart.apiTest.displayUI).toHaveBeenCalled();
+    });
+
     it('should have checkIfBuyButtonIsEnable method', function () {
       expect(ShopCart.apiTest.checkIfBuyButtonIsEnable).toBeDefined();
     });

@@ -40,7 +40,7 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
       });
 
       Handlebars.registerHelper('addQuantityWithCorrectIndicator', function(quantity) {
-        if (quantity == "1") {
+        if (quantity === "1" || quantity === 1) {
           return quantity + " Unidad";
         }
         return quantity + " Unidades";
