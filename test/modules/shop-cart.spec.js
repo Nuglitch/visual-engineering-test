@@ -91,6 +91,10 @@ define(['modules/shop-cart'], function (ShopCart) {
       expect(ShopCart.apiTest.addButtonEnabledProperty).toBeDefined();
     });
 
+    it('should have errorGettingItems method', function () {
+      expect(ShopCart.apiTest.errorGettingItems).toBeDefined();
+    });
+
     it('should have createTemplate method', function () {
       expect(ShopCart.apiTest.createTemplate).toBeDefined();
     });
