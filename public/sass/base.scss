@@ -22,42 +22,42 @@ body {
 	padding: $offset-padding;
 	border-bottom: 1px solid #ccc;
 	height: 75px;
+
+	&.out-of-stock {
+		background-color: pink;
+	}
+
+	.name {
+		text-transform: uppercase;
+		font-weight: bold;
+		position: absolute;
+		top: $offset-layouts;
+		left: $offset-layouts-left;
+	}
+
+	.price {
+		position: absolute;
+		bottom: $offset-layouts;
+		left: $offset-layouts-left;
+	}
+
+	.quantity {
+		position: absolute;
+		font-weight: bold;
+		bottom: $offset-layouts;
+		right: $offset-layouts;
+	}
+
+	.delete {
+		position: absolute;
+		top: $offset-layouts;
+		right: $offset-layouts;
+		cursor: pointer;
+	}
 }
 
 .list:first-child {
 	border-top: 1px solid #ccc;
-}
-
-.name {
-	text-transform: uppercase;
-	font-weight: bold;
-	position: absolute;
-	top: $offset-layouts;
-	left: $offset-layouts-left;
-}
-
-.price {
-	position: absolute;
-	bottom: $offset-layouts;
-	left: $offset-layouts-left;
-}
-
-.quantity {
-	position: absolute;
-	font-weight: bold;
-	bottom: $offset-layouts;
-	right: $offset-layouts;
-}
-
-.delete {
-	position: absolute;
-	top: $offset-layouts;
-	right: $offset-layouts;
-	cursor: pointer;
-}
-
-.out-of-stock {
-	background-color: pink;
 }
 
 button {
