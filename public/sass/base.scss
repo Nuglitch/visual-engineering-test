@@ -64,45 +64,45 @@ button {
 	background-color: $color-button;
 	color: $color-text-button;
 	border: none;    
-    text-align: center;
-    text-decoration: none;
+	text-align: center;
+	text-decoration: none;
 	width: 100%;
-    padding: 10px 0px;
+	padding: 10px 0px;
 	font-weight: bold;
 	cursor: pointer;
 	margin-top: 20px;
 
-    &:disabled {
-    	background-color: $color-button-disabled;
+	&:disabled {
+		background-color: $color-button-disabled;
 		color: $color-text-button-disabled;
 		cursor: default;
 	}
 }
 
 .item-animation {
-    -webkit-animation-name: delete-animation; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 300ms; /* Safari 4.0 - 8.0 */
-    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
-    animation-name: delete-animation;
-    animation-duration: 300ms;
-    animation-fill-mode: forwards;
+	-webkit-animation-name: delete-animation; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 300ms; /* Safari 4.0 - 8.0 */
+	-webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+	animation-name: delete-animation;
+	animation-duration: 300ms;
+	animation-fill-mode: forwards;
 }
 
 @mixin animation-content {
 	from {
-    	left: 0px;
-    }
-    to {
-    	left: 100%;
-    }
+		left: 0px;
+	}
+	to {
+		left: 100%;
+	}
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes delete-animation {
-    @include animation-content;
+	@include animation-content;
 }
 
 /* Standard syntax */
 @keyframes delete-animation {
-    @include animation-content;
+	@include animation-content;
 }
