@@ -22,11 +22,12 @@ define(['jquery'], function($) {
     /**
      * Get shop cart items from the server and call the callback method
      * @param callback - Method to be called when the items are gotten
+     * @param errorCallback- Method to be called when an error happens
      */
-    getShopCartItems: function(callback) {
+    getShopCartItems: function(callback, errorCallback) {
       try {
         if (_private.options.urls.list === undefined) {
-          throw "Error";
+          throw "No se ha especificado una url.";
         }
         $.ajax({
           url: _private.options.urls.list,
@@ -37,11 +38,11 @@ define(['jquery'], function($) {
 
           },
           error: function(data) {
-            alert('Error al obtener los elementos.');
+            errorCallback('Error al obtener los elementos.');
           }
         });
       } catch (error) {
-        alert('Error al obtener los elementos.');
+        errorCallback(error);
       }
     }
   };

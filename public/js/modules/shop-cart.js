@@ -75,6 +75,14 @@ define(['jquery', 'templates/shop-cart-item-template'], function($, ShopCartItem
     },
 
     /**
+     * Method to handle errors getting items
+     * @param error - Error message
+     */
+    errorGettingItems: function(error) {
+      alert(error);
+    },
+
+    /**
      * Call the template module for stuff the list
      * @param container - Id of the element that will be stuff with the shop cart items
      */
@@ -110,7 +118,7 @@ define(['jquery', 'templates/shop-cart-item-template'], function($, ShopCartItem
       _private.container.find('.list').remove();
 
       //get items
-      _private.options.getShopCartItems(_private.createTemplate.bind(_private, _private.options.containerId));
+      _private.options.getShopCartItems(_private.createTemplate.bind(_private, _private.options.containerId), _private.errorGettingItems);
     },
 
     /**
