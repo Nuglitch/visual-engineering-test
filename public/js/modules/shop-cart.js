@@ -86,9 +86,9 @@ define(['jquery'], function($) {
      * Call the template module for stuff the list
      * @param container - Id of the element that will be stuff with the shop cart items
      */
-    createTemplate: function(containerId, items) {
-      this.options.createTemplate(items);
-      this.displayUI();
+    createTemplate: function(items) {
+      _private.options.createTemplate(items);
+      _private.displayUI();
     }
   };
 
@@ -113,7 +113,7 @@ define(['jquery'], function($) {
       _private.container.find('.list').remove();
 
       //get items
-      _private.options.getShopCartItems(_private.createTemplate.bind(_private, _private.options.containerId), _private.errorGettingItems);
+      _private.options.getShopCartItems(_private.createTemplate, _private.errorGettingItems);
     },
 
     /**
