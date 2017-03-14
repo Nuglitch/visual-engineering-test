@@ -1,5 +1,5 @@
 /**
- * This modules manages the logic for the shopping cart
+ * This modules manages the templates for the shopping cart
  */
 define(['jquery', 'handlebars'], function($, Handlebars) {
   'use strict';

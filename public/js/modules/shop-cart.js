@@ -75,27 +75,17 @@ define(['jquery', 'templates/shop-cart-item-template'], function($, ShopCartItem
     },
 
     /**
-     * Get shop cart items from the server and call the template module for stuff the list
-     * @param container - Html element that will be stuff with the shop cart items
+     * Call the template module for stuff the list
+     * @param container - Id of the element that will be stuff with the shop cart items
      */
-    addItemsFromServer: function(containerId) {
-      $.ajax({
-        url: _private.options.urls.list,
-        type: 'GET',
-        success: function(data) {
+    createTemplate: function(containerId, items) {
+      var templateOptions = {
+        data: items,
+        containerId: containerId
+      };
 
-          var templateOptions = {
-            data: data,
-            containerId: containerId
-          };
-
-          ShopCartItemTemplate.init(templateOptions);
-          _private.displayUI();
-        },
-        error: function(data) {
-          alert('Error getting items');
-        }
-      });
+      ShopCartItemTemplate.init(templateOptions);
+      this.displayUI();
     }
   };
 
@@ -118,7 +108,9 @@ define(['jquery', 'templates/shop-cart-item-template'], function($, ShopCartItem
      */
     reset: function() {
       _private.container.find('.list').remove();
-      _private.addItemsFromServer(_private.options.containerId);
+
+      //get items
+      _private.options.getShopCartItems(_private.createTemplate.bind(_private, _private.options.containerId));
     },
 
     /**

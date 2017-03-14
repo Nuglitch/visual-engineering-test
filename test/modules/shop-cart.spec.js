@@ -91,8 +91,8 @@ define(['modules/shop-cart'], function (ShopCart) {
       expect(ShopCart.apiTest.addButtonEnabledProperty).toBeDefined();
     });
 
-    it('should have addItemsFromServer method', function () {
-      expect(ShopCart.apiTest.addItemsFromServer).toBeDefined();
+    it('should have createTemplate method', function () {
+      expect(ShopCart.apiTest.createTemplate).toBeDefined();
     });
 
     it('should have reset method', function () {
