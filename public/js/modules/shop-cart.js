@@ -1,7 +1,7 @@
 /**
  * This modules manages the logic for the shopping cart
  */
-define(['jquery', 'templates/shop-cart-item-template'], function($, ShopCartItemTemplate) {
+define(['jquery'], function($) {
   'use strict';
 
   var _private = {
@@ -87,12 +87,7 @@ define(['jquery', 'templates/shop-cart-item-template'], function($, ShopCartItem
      * @param container - Id of the element that will be stuff with the shop cart items
      */
     createTemplate: function(containerId, items) {
-      var templateOptions = {
-        data: items,
-        containerId: containerId
-      };
-
-      ShopCartItemTemplate.init(templateOptions);
+      this.options.createTemplate(items);
       this.displayUI();
     }
   };

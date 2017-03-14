@@ -8,10 +8,14 @@ define(['templates/shop-cart-item-template'], function (ShopCartItemTemplate) {
       expect(ShopCartItemTemplate.init).toBeDefined();
     });
 
-    it('init method should call displayUI method', function () {
-      spyOn(ShopCartItemTemplate.apiTest, 'displayUI');
-      ShopCartItemTemplate.init(options);
-       expect(ShopCartItemTemplate.apiTest.displayUI).toHaveBeenCalled();
+    it('should have create method', function () {
+      expect(ShopCartItemTemplate.create).toBeDefined();
+    });
+
+    it('create method should call createAndDisplayTemplate method', function () {
+      spyOn(ShopCartItemTemplate.apiTest, 'createAndDisplayTemplate');
+      ShopCartItemTemplate.create();
+      expect(ShopCartItemTemplate.apiTest.createAndDisplayTemplate).toHaveBeenCalled();
     });
 
     describe('should format a string number to EUR', function () {

@@ -26,9 +26,9 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
       "</div>",
 
     /**
-     * private method to displau UI and bind user action events
+     * private method to create a template and display it
      */
-    displayUI: function() {
+    createAndDisplayTemplate: function(items) {
       var doTemplate = Handlebars.compile(this.htmlTemplate);
 
       Handlebars.registerHelper('priceEur', function(price) {
@@ -46,7 +46,7 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
         return quantity + " Unidades";
       });
 
-      var htmlData = doTemplate(this.options.data);
+      var htmlData = doTemplate(items);
       this.container.prepend(htmlData);
       this.container.show();
     },
@@ -89,8 +89,10 @@ define(['jquery', 'handlebars'], function($, Handlebars) {
       _private.options = options;
 
       _private.container = $('#' + options.containerId);
+    },
 
-      _private.displayUI();
+    create: function(items) {
+      _private.createAndDisplayTemplate(items);
     },
 
     /**

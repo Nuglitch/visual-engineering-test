@@ -11,7 +11,7 @@ require.config({
   }
 });
 
-require(['modules/shop-cart', 'modules/confirmation', 'modules/api-adapter'], function(ShopCart, Confirmation, ApiAdapter) {
+require(['modules/shop-cart', 'modules/confirmation', 'templates/shop-cart-item-template', 'modules/api-adapter'], function(ShopCart, Confirmation, ShopCartItemTemplate, ApiAdapter) {
   'use strict';
 
   //options to pass to ShopCart and Confirmation such as class or id selectors
@@ -19,7 +19,8 @@ require(['modules/shop-cart', 'modules/confirmation', 'modules/api-adapter'], fu
   var shopCartOptions = {
     showConfirmation: Confirmation.show,
     containerId: 'shopCart',
-    getShopCartItems: ApiAdapter.getShopCartItems
+    getShopCartItems: ApiAdapter.getShopCartItems,
+    createTemplate: ShopCartItemTemplate.create
   };
 
   ShopCart.init(shopCartOptions);
@@ -30,6 +31,12 @@ require(['modules/shop-cart', 'modules/confirmation', 'modules/api-adapter'], fu
   };
 
   Confirmation.init(confirmationOptions);
+
+  var templateOptions = {
+    containerId: 'shopCart'
+  };
+
+  ShopCartItemTemplate.init(templateOptions);
 
   var apiAdapterOptions = {
     urls: {
