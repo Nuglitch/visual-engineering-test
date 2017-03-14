@@ -16,6 +16,8 @@ require(['modules/shop-cart', 'modules/confirmation', 'templates/shop-cart-item-
 
   //options to pass to ShopCart and Confirmation such as class or id selectors
   //add options as needed, this are empty examples
+
+  // ShopCart
   var shopCartOptions = {
     showConfirmation: Confirmation.show,
     containerId: 'shopCart',
@@ -25,6 +27,7 @@ require(['modules/shop-cart', 'modules/confirmation', 'templates/shop-cart-item-
 
   ShopCart.init(shopCartOptions);
 
+  // Confirmation
   var confirmationOptions = {
     resetShopCart: ShopCart.reset,
     containerId: 'confirmation'
@@ -32,12 +35,14 @@ require(['modules/shop-cart', 'modules/confirmation', 'templates/shop-cart-item-
 
   Confirmation.init(confirmationOptions);
 
+  // ShopCartItemTemplate
   var templateOptions = {
     containerId: 'shopCart'
   };
 
   ShopCartItemTemplate.init(templateOptions);
 
+  // ApiAdapter
   var apiAdapterOptions = {
     urls: {
       list: "/items"
